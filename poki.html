@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="noindex, nofollow">
+	<title>Brothers Make Games × Poki</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #ffffff;
+			--bg-soft: #f7fafc;
+			--text: #1a202c;
+			--muted: #4a5568;
+			--border: #e2e8f0;
+			--accent: #0ea5e9;
+			--accent-soft: rgba(14, 165, 233, 0.12);
+			--pop: #f472b6;
+			--pop-soft: rgba(244, 114, 182, 0.15);
+			--lime: #84cc16;
+			--shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+			--shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.08);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: "Nunito", -apple-system, BlinkMacSystemFont, sans-serif;
+			background: var(--bg);
+			background-image:
+				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 165, 233, 0.08), transparent),
+				radial-gradient(ellipse 60% 40% at 100% 50%, rgba(244, 114, 182, 0.06), transparent);
+			color: var(--text);
+			line-height: 1.65;
+			font-size: 1.05rem;
+		}
+
+		.wrap {
+			max-width: 840px;
+			margin: 0 auto;
+			padding: 0 24px 72px;
+		}
+
+		.hero {
+			padding: 48px 0 40px;
+			border-bottom: 2px dashed var(--border);
+		}
+
+		.hero p.lead {
+			font-family: "Outfit", "Nunito", sans-serif;
+			font-size: clamp(1.3rem, 3.2vw, 1.65rem);
+			font-weight: 700;
+			line-height: 1.4;
+			margin: 0 0 18px;
+			color: var(--text);
+			letter-spacing: -0.02em;
+		}
+
+		.hero p.lead em {
+			font-style: normal;
+			color: var(--accent);
+			background: linear-gradient(120deg, var(--accent-soft) 0%, var(--pop-soft) 100%);
+			padding: 0 0.15em;
+			border-radius: 4px;
+		}
+
+		.hero .sub {
+			color: var(--muted);
+			margin: 0;
+			max-width: 62ch;
+		}
+
+		.hero .sub strong {
+			color: var(--text);
+		}
+
+		section {
+			padding: 44px 0;
+			border-bottom: 2px dashed var(--border);
+		}
+
+		section:last-of-type {
+			border-bottom: none;
+		}
+
+		h2 {
+			font-family: "Outfit", sans-serif;
+			font-size: 1.55rem;
+			font-weight: 800;
+			margin: 0 0 20px;
+			letter-spacing: -0.03em;
+			color: var(--text);
+		}
+
+		h2 span {
+			display: block;
+			font-family: "Nunito", sans-serif;
+			font-size: 0.72rem;
+			font-weight: 800;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--pop);
+			margin-bottom: 8px;
+		}
+
+		.team-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+		}
+
+		@media (max-width: 600px) {
+			.team-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.team-card {
+			background: var(--bg-soft);
+			border: 2px solid var(--border);
+			border-radius: 20px;
+			padding: 24px 20px 22px;
+			text-align: center;
+			box-shadow: var(--shadow);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.team-card:hover {
+			transform: translateY(-2px);
+			box-shadow: var(--shadow-lg);
+		}
+
+		.team-card .cutout {
+			margin: 0 auto 16px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			min-height: 200px;
+		}
+
+		.team-card .cutout img {
+			max-width: 100%;
+			width: auto;
+			height: auto;
+			max-height: 220px;
+			object-fit: contain;
+			display: block;
+			filter: drop-shadow(0 10px 28px rgba(15, 23, 42, 0.1));
+		}
+
+		.team-card p {
+			margin: 0;
+			color: var(--muted);
+			font-size: 0.95rem;
+		}
+
+		.team-card strong.name {
+			display: block;
+			font-family: "Outfit", sans-serif;
+			color: var(--text);
+			font-size: 1.2rem;
+			font-weight: 800;
+			margin-bottom: 6px;
+		}
+
+		.body-text p {
+			margin: 0 0 16px;
+			color: var(--muted);
+		}
+
+		.body-text p:last-child {
+			margin-bottom: 0;
+		}
+
+		.highlight {
+			background: linear-gradient(135deg, var(--accent-soft), var(--pop-soft));
+			border: 2px solid var(--border);
+			border-radius: 16px;
+			padding: 18px 22px;
+			margin: 22px 0 0;
+			box-shadow: var(--shadow);
+		}
+
+		.highlight p {
+			margin: 0;
+			color: var(--text);
+			font-size: 0.98rem;
+			font-weight: 600;
+		}
+
+		.bat-card {
+			background: var(--bg);
+			border: 2px solid var(--border);
+			border-radius: 24px;
+			padding: 28px;
+			box-shadow: var(--shadow-lg);
+		}
+
+		.bat-card h3 {
+			font-family: "Outfit", sans-serif;
+			font-size: 1.7rem;
+			font-weight: 800;
+			margin: 0 0 8px;
+			color: var(--text);
+			letter-spacing: -0.02em;
+		}
+
+		.bat-card .tagline {
+			color: var(--accent);
+			font-weight: 700;
+			font-size: 0.98rem;
+			margin: 0 0 16px;
+		}
+
+		.bat-card p {
+			color: var(--muted);
+			margin: 0 0 20px;
+		}
+
+		.store-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+
+		.store-btn {
+			display: inline-flex;
+			align-items: center;
+			padding: 10px 18px;
+			border-radius: 999px;
+			text-decoration: none;
+			font-weight: 800;
+			font-size: 0.88rem;
+			transition: transform 0.15s ease, box-shadow 0.15s ease;
+			border: 2px solid transparent;
+		}
+
+		.store-btn:hover {
+			transform: scale(1.03);
+			box-shadow: var(--shadow);
+		}
+
+		.store-btn.steam {
+			background: #1b2838;
+			color: #fff;
+		}
+
+		.store-btn.ios {
+			background: #000;
+			color: #fff;
+		}
+
+		.store-btn.android {
+			background: var(--lime);
+			color: #14532d;
+			border-color: #65a30d;
+		}
+
+		.demo-section h2 {
+			margin-bottom: 12px;
+		}
+
+		.demo-section > p {
+			color: var(--muted);
+			margin: 0 0 20px;
+			max-width: 60ch;
+		}
+
+		.demo-frame {
+			position: relative;
+			width: 100%;
+			aspect-ratio: 16 / 10;
+			max-height: 520px;
+			background: #0f172a;
+			border-radius: 20px;
+			overflow: hidden;
+			border: 3px solid var(--border);
+			box-shadow: var(--shadow-lg);
+		}
+
+		.demo-frame iframe {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+
+		.demo-note {
+			margin-top: 14px;
+			font-size: 0.88rem;
+			color: var(--muted);
+		}
+
+		footer {
+			padding-top: 28px;
+			text-align: center;
+			color: var(--muted);
+			font-size: 0.92rem;
+		}
+
+		footer a {
+			color: var(--accent);
+			font-weight: 700;
+			text-decoration: none;
+		}
+
+		footer a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<header class="hero">
+			<p class="lead">Poki team — we’re <em>thrilled</em> at the idea of building games with you as developers on your platform. Here’s a concise look at who we are, what we ship, and what we’re working on next.</p>
+			<p class="sub">We’re <strong>Brothers Make Games</strong>: Jared and Dylan, two brothers building games together in <strong>Southern California</strong>. We design and ship in-house — from feel-first mechanics to release — with a focus on tight action gameplay players can pick up in seconds and chase for hours.</p>
+		</header>
+
+		<section aria-labelledby="team-heading">
+			<h2 id="team-heading"><span>The team</span>Jared &amp; Dylan</h2>
+			<div class="team-grid">
+				<article class="team-card">
+					<div class="cutout">
+						<img src="Images/jared.png" width="280" alt="Jared, co-founder of Brothers Make Games">
+					</div>
+					<strong class="name">Jared</strong>
+					<p>Design, code, and the stubborn pursuit of “one more try.”</p>
+				</article>
+				<article class="team-card">
+					<div class="cutout">
+						<img src="Images/DylanCutout1.png" width="280" alt="Dylan, co-founder of Brothers Make Games">
+					</div>
+					<strong class="name">Dylan</strong>
+					<p>Art, audio, and making sure every frame feels alive.</p>
+				</article>
+			</div>
+		</section>
+
+		<section aria-labelledby="action-heading">
+			<h2 id="action-heading"><span>Why we build</span>Action first</h2>
+			<div class="body-text">
+				<p>We grew up on arcade reflexes and console classics — games where skill matters and every run teaches you something. That’s still what pulls us in: readable threats, responsive controls, and difficulty that feels fair because the rules never cheat.</p>
+				<p>Web games sit right in that sweet spot: instant play, room for mastery, and a huge audience discovering your work for the first time. We’d love to bring that mindset to Poki’s players.</p>
+			</div>
+			<div class="highlight">
+				<p>We’re not chasing trends — we’re chasing <strong>clarity</strong> in motion: one core mechanic, tuned until it sings.</p>
+			</div>
+		</section>
+
+		<section aria-labelledby="bat-heading">
+			<h2 id="bat-heading"><span>Shipped &amp; reviewed</span>Bat to Bed</h2>
+			<div class="bat-card">
+				<h3>Bat to Bed</h3>
+				<p class="tagline">Our flagship precision platformer — a haunted climb where turning around means smacking into a wall on purpose.</p>
+				<p>Players and critics have been generous: <strong style="color: var(--text);">strong reviews on Steam</strong>, and warm reception on <strong style="color: var(--text);">iOS and Android</strong>. It’s proof we can ship a polished action title across PC and mobile and support it after launch.</p>
+				<div class="store-row">
+					<a class="store-btn steam" href="https://store.steampowered.com/app/2021390/Bat_to_Bed/" target="_blank" rel="noopener noreferrer">Steam</a>
+					<a class="store-btn ios" href="https://apps.apple.com/app/bat-to-bed/id1629316592" target="_blank" rel="noopener noreferrer">App Store</a>
+					<a class="store-btn android" href="https://play.google.com/store/apps/details?id=org.brothersmakegames.battobed" target="_blank" rel="noopener noreferrer">Google Play</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="demo-section" aria-labelledby="demo-heading">
+			<h2 id="demo-heading"><span>Work in progress</span>Play our latest web demo</h2>
+			<p>Below is a current browser build we’re iterating on — built with web delivery (and platforms like yours) in mind. Click the frame, give it a spin, and imagine what we’d ship with Poki’s reach behind it.</p>
+			<div class="demo-frame">
+				<iframe src="DinoRunDemo/DinoRunDemo.html" title="Dino Run interactive demo" allow="autoplay; fullscreen; gamepad" loading="lazy"></iframe>
+			</div>
+			<p class="demo-note">Tip: if audio or input feels stuck, click inside the game once to focus it — standard for embedded web games.</p>
+		</section>
+
+		<footer>
+			<p><a href="mailto:brothersmakegames@gmail.com">brothersmakegames@gmail.com</a> · Brothers Make Games</p>
+		</footer>
+	</div>
+</body>
+</html>
