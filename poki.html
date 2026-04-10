@@ -201,11 +201,28 @@
 			box-shadow: var(--shadow-lg);
 		}
 
+		.bat-title-row {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			margin-bottom: 10px;
+		}
+
+		.bat-title-row .bat-app-icon {
+			width: 64px;
+			height: 64px;
+			border-radius: 14px;
+			object-fit: cover;
+			flex-shrink: 0;
+			box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+			border: 1px solid var(--border);
+		}
+
 		.bat-card h3 {
 			font-family: "Outfit", sans-serif;
 			font-size: 1.7rem;
 			font-weight: 800;
-			margin: 0 0 8px;
+			margin: 0;
 			color: var(--text);
 			letter-spacing: -0.02em;
 		}
@@ -246,13 +263,15 @@
 		}
 
 		.store-btn.steam {
-			background: #1b2838;
-			color: #fff;
+			background: linear-gradient(180deg, #213a52 0%, #152a3d 55%, #0f1f2e 100%);
+			color: #c8d8e8;
+			border-color: #2a4a66;
 		}
 
 		.store-btn.ios {
-			background: #000;
+			background: #0071e3;
 			color: #fff;
+			border-color: #0077ed;
 		}
 
 		.store-btn.android {
@@ -356,9 +375,12 @@
 		<section aria-labelledby="bat-heading">
 			<h2 id="bat-heading"><span>Shipped &amp; reviewed</span>Bat to Bed</h2>
 			<div class="bat-card">
-				<h3>Bat to Bed</h3>
-				<p class="tagline">Our flagship precision platformer — a haunted climb where turning around means smacking into a wall on purpose.</p>
-				<p>Players and critics have been generous: <strong style="color: var(--text);">strong reviews on Steam</strong>, and warm reception on <strong style="color: var(--text);">iOS and Android</strong>. It’s proof we can ship a polished action title across PC and mobile and support it after launch.</p>
+				<div class="bat-title-row">
+					<img class="bat-app-icon" src="Images/bat_to_bed_app_icon.png" width="64" height="64" alt="">
+					<h3>Bat to Bed</h3>
+				</div>
+				<p class="tagline">A <strong style="color: var(--text);">casual yet deep</strong>, <strong style="color: var(--text);">mobile-first</strong> game — a haunted precision climb where turning around means smacking into a wall on purpose. We recently launched in <strong style="color: var(--text);">Early Access on Steam</strong>, alongside polished releases on iOS and Android.</p>
+				<p>Players and critics have been generous: <strong style="color: var(--text);">strong reviews on Steam</strong>, and warm reception on <strong style="color: var(--text);">mobile</strong>. So far the game has been downloaded <strong style="color: var(--text);">more than 100,000 times</strong> — and we have <strong style="color: var(--text);">more content coming to Bat to Bed soon</strong>. It’s proof we can ship a polished action title across PC and phone and keep building it after launch.</p>
 				<div class="store-row">
 					<a class="store-btn steam" href="https://store.steampowered.com/app/2021390/Bat_to_Bed/" target="_blank" rel="noopener noreferrer">Steam</a>
 					<a class="store-btn ios" href="https://apps.apple.com/app/bat-to-bed/id1629316592" target="_blank" rel="noopener noreferrer">App Store</a>
