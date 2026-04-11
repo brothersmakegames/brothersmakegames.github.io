@@ -153,7 +153,7 @@
 			color: var(--text);
 		}
 
-		h2 span {
+		h2 .h2-overline {
 			display: block;
 			font-family: "Nunito", sans-serif;
 			font-size: 0.72rem;
@@ -162,6 +162,10 @@
 			text-transform: uppercase;
 			color: var(--pop);
 			margin-bottom: 8px;
+		}
+
+		h2 .h2-main-blue {
+			color: var(--accent);
 		}
 
 		.team-grid {
@@ -364,6 +368,7 @@
 			max-width: 60ch;
 		}
 
+
 		.demo-frame {
 			position: relative;
 			width: 100%;
@@ -435,29 +440,19 @@
 			<p class="sub">We’re <strong>Brothers Make Games</strong>, a two-brother indie studio based in California. We design and ship in-house — from feel-first mechanics to release.</p>
 		</header>
 
-		<section aria-labelledby="team-heading">
-			<h2 id="team-heading"><span>Who are we?</span>The Team</h2>
-			<div class="team-grid">
-				<article class="team-card">
-					<div class="cutout">
-						<img src="../Images/jared.png" width="280" alt="Jared, co-founder of Brothers Make Games">
-					</div>
-					<strong class="name">Jared</strong>
-					<p>Art, sound, and making sure every frame feels alive.</p>
-				</article>
-				<article class="team-card">
-					<div class="cutout">
-						<img src="../Images/DylanCutout1.png" width="280" alt="Dylan, co-founder of Brothers Make Games">
-					</div>
-					<strong class="name">Dylan</strong>
-					<p>Design, code and other technical wizardry.</p>
-				</article>
+		<section class="demo-section" aria-labelledby="demo-heading">
+			<h2 id="demo-heading"><span class="h2-overline">Work in progress</span><span class="h2-main-blue">We're working on a brand new game for the Poki platform!</span></h2>
+			<p>Below is a current build we’re iterating on — built specifically for the Poki platform. An auto-runner with an elegant one-button control scheme and rich movement depth.</p>
+			<p class="tagline"><strong>Players are immediately drawn into the action</strong> and given incentives to <strong>Star</strong> each level to unlock new cosmetics and fill the overworld with satisfying star badges.</p>
+			<p>Combining classic, mario-like creativity with a dash of speed-running addiction. Click the frame and give it a spin!</p>
+			<div class="demo-frame">
+				<iframe src="../DinoRunDemo/DinoRunDemo.html" title="Dino Run interactive demo" allow="autoplay; fullscreen; gamepad; microphone"></iframe>
 			</div>
+			<p class="demo-note">Tip: if audio or input feels stuck, click inside the game to focus it.</p>
 		</section>
 
-
 		<section aria-labelledby="bat-heading">
-			<h2 id="bat-heading" class="bat-section-heading"><span>Shipped &amp; reviewed</span> Check out our work! </h2>
+			<h2 id="bat-heading" class="bat-section-heading"><span class="h2-overline">Shipped &amp; reviewed</span> Check out our work! </h2>
 			<div class="bat-card">
 				<div class="bat-title-row">
 					<img class="bat-app-icon" src="../Images/bat_to_bed_app_icon.png" width="96" height="96" alt="">
@@ -474,13 +469,24 @@
 			</div>
 		</section>
 
-		<section class="demo-section" aria-labelledby="demo-heading">
-			<h2 id="demo-heading"><span>Work in progress</span>We're working on a brand new game for the Poki platform!</h2>
-			<p>Below is a current browser build we’re iterating on — built specifically for the Poki platform. Click the frame and give it a spin!</p>
-			<div class="demo-frame">
-				<iframe src="../DinoRunDemo/DinoRunDemo.html" title="Dino Run interactive demo" allow="autoplay; fullscreen; gamepad; microphone"></iframe>
+		<section aria-labelledby="team-heading">
+			<h2 id="team-heading"><span class="h2-overline">Who are we?</span><span class="h2-main-blue">The Team</span></h2>
+			<div class="team-grid">
+				<article class="team-card">
+					<div class="cutout">
+						<img src="../Images/jared.png" width="280" alt="Jared, co-founder of Brothers Make Games">
+					</div>
+					<strong class="name">Jared</strong>
+					<p>Art, sound, and making sure every frame feels alive.</p>
+				</article>
+				<article class="team-card">
+					<div class="cutout">
+						<img src="../Images/DylanCutout1.png" width="280" alt="Dylan, co-founder of Brothers Make Games">
+					</div>
+					<strong class="name">Dylan</strong>
+					<p>Design, code and other technical wizardry.</p>
+				</article>
 			</div>
-			<p class="demo-note">Tip: if audio or input feels stuck, click inside the game to focus it.</p>
 		</section>
 
 		<footer>
