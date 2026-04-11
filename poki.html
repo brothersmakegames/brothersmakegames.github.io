@@ -69,6 +69,27 @@
 			border-radius: 4px;
 		}
 
+		.hero-brand {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 0.45em;
+			margin: 0 0 14px;
+			font-family: "Outfit", sans-serif;
+			font-size: clamp(1.2rem, 2.8vw, 1.4rem);
+			font-weight: 800;
+			letter-spacing: -0.02em;
+			line-height: 1.3;
+			color: var(--text);
+		}
+
+		.hero-brand-logo {
+			height: 1em;
+			width: auto;
+			display: block;
+			flex-shrink: 0;
+		}
+
 		.hero .sub {
 			color: var(--muted);
 			margin: 0;
@@ -209,9 +230,9 @@
 		}
 
 		.bat-title-row .bat-app-icon {
-			width: 64px;
-			height: 64px;
-			border-radius: 14px;
+			width: 96px;
+			height: 96px;
+			border-radius: 20px;
 			object-fit: cover;
 			flex-shrink: 0;
 			box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
@@ -338,7 +359,11 @@
 	<div class="wrap">
 		<header class="hero">
 			<p class="lead">Poki team — we’re <em>thrilled</em> at the idea of building games with you.</p>
-			<p class="sub">We’re <strong>Brothers Make Games</strong>: Jared and Dylan, two brothers building games together in <strong>Southern California</strong>. We design and ship in-house — from feel-first mechanics to release — with a focus on tight action gameplay players can pick up in seconds and chase for hours.</p>
+			<p class="hero-brand">
+				<span>We’re Brothers Make Games</span>
+				<img src="Images/logo.png" alt="" class="hero-brand-logo">
+			</p>
+			<p class="sub">Jared and Dylan, two brothers building games together in <strong>Southern California</strong>. We design and ship in-house — from feel-first mechanics to release — with a focus on tight action gameplay players can pick up in seconds and chase for hours.</p>
 		</header>
 
 		<section aria-labelledby="team-heading">
@@ -376,11 +401,11 @@
 			<h2 id="bat-heading"><span>Shipped &amp; reviewed</span>Bat to Bed</h2>
 			<div class="bat-card">
 				<div class="bat-title-row">
-					<img class="bat-app-icon" src="Images/bat_to_bed_app_icon.png" width="64" height="64" alt="">
+					<img class="bat-app-icon" src="Images/bat_to_bed_app_icon.png" width="96" height="96" alt="">
 					<h3>Bat to Bed</h3>
 				</div>
 				<p class="tagline">A <strong style="color: var(--text);">casual yet deep</strong>, <strong style="color: var(--text);">mobile-first</strong> game — a haunted precision climb where turning around means smacking into a wall on purpose. We recently launched in <strong style="color: var(--text);">Early Access on Steam</strong>, alongside polished releases on iOS and Android.</p>
-				<p>Players and critics have been generous: <strong style="color: var(--text);">strong reviews on Steam</strong>, and warm reception on <strong style="color: var(--text);">mobile</strong>. So far the game has been downloaded <strong style="color: var(--text);">more than 100,000 times</strong> — and we have <strong style="color: var(--text);">more content coming to Bat to Bed soon</strong>. It’s proof we can ship a polished action title across PC and phone and keep building it after launch.</p>
+				<p>Players and critics have been clear: <strong style="color: var(--text);">strong reviews on Steam</strong>, and warm reception on <strong style="color: var(--text);">mobile</strong>. So far the game has been downloaded <strong style="color: var(--text);">more than 100,000 times</strong> — and we have <strong style="color: var(--text);">more content coming to Bat to Bed soon</strong></p>
 				<div class="store-row">
 					<a class="store-btn steam" href="https://store.steampowered.com/app/2021390/Bat_to_Bed/" target="_blank" rel="noopener noreferrer">Steam</a>
 					<a class="store-btn ios" href="https://apps.apple.com/app/bat-to-bed/id1629316592" target="_blank" rel="noopener noreferrer">App Store</a>
@@ -390,8 +415,8 @@
 		</section>
 
 		<section class="demo-section" aria-labelledby="demo-heading">
-			<h2 id="demo-heading"><span>Work in progress</span>Play our latest web demo</h2>
-			<p>Below is a current browser build we’re iterating on — built with web delivery (and platforms like yours) in mind. Click the frame, give it a spin, and imagine what we’d ship with Poki’s reach behind it.</p>
+			<h2 id="demo-heading"><span>Work in progress</span>We're working on a brand new game for the Poki platform!</h2>
+			<p>Below is a current browser build we’re iterating on — built specifically for the Poki platform. Click the frame and give it a spin!</p>
 			<div class="demo-frame">
 				<iframe src="DinoRunDemo/DinoRunDemo.html" title="Dino Run interactive demo" allow="autoplay; fullscreen; gamepad" loading="lazy"></iframe>
 			</div>
