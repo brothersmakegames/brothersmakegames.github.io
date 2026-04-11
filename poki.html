@@ -263,9 +263,25 @@
 
 		.bat-title-row {
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			gap: 16px;
 			margin-bottom: 10px;
+		}
+
+		.bat-title-text {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			min-width: 0;
+		}
+
+		.bat-title-sub {
+			margin: 0;
+			font-family: "Nunito", sans-serif;
+			font-size: 0.92rem;
+			font-weight: 700;
+			color: var(--muted);
+			letter-spacing: 0.01em;
 		}
 
 		.bat-title-row .bat-app-icon {
@@ -359,6 +375,7 @@
 			position: relative;
 			width: 100%;
 			aspect-ratio: 16 / 10;
+			min-height: 260px;
 			max-height: 520px;
 			background: #0f172a;
 			border-radius: 20px;
@@ -451,7 +468,10 @@
 			<div class="bat-card">
 				<div class="bat-title-row">
 					<img class="bat-app-icon" src="Images/bat_to_bed_app_icon.png" width="96" height="96" alt="">
-					<h3>Bat to Bed</h3>
+					<div class="bat-title-text">
+						<h3>Bat to Bed</h3>
+						<p class="bat-title-sub">100,000+ downloads</p>
+					</div>
 				</div>
 				<p class="tagline">A <strong>casual yet deep</strong>, <strong>mobile-first</strong> game — a haunted precision climb where turning around means smacking into a wall on purpose. We recently launched in <strong>Early Access on Steam</strong>, alongside polished releases on iOS and Android.</p>
 				<p>Players and critics have been clear: <strong>strong reviews on Steam</strong>, and rave reception on <strong>mobile</strong>. So far the game has been downloaded <strong>more than 100,000 times</strong> — and we have <strong>more content coming to Bat to Bed soon.</strong></p>
@@ -467,7 +487,7 @@
 			<h2 id="demo-heading"><span>Work in progress</span>We're working on a brand new game for the Poki platform!</h2>
 			<p>Below is a current browser build we’re iterating on — built specifically for the Poki platform. Click the frame and give it a spin!</p>
 			<div class="demo-frame">
-				<iframe src="DinoRunDemo/DinoRunDemo.html" title="Dino Run interactive demo" allow="autoplay; fullscreen; gamepad" loading="lazy"></iframe>
+				<iframe src="DinoRunDemo/DinoRunDemo.html" title="Dino Run interactive demo" allow="autoplay; fullscreen; gamepad; microphone"></iframe>
 			</div>
 			<p class="demo-note">Tip: if audio or input feels stuck, click inside the game to focus it.</p>
 		</section>

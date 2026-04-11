@@ -77,8 +77,8 @@ body {
 }
 		</style>
 		
-		<!-- Poki SDK include -->
-		<script src="//game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
+		<!-- Poki SDK include (https avoids edge cases; blocked ad blockers still fall through to catch below) -->
+		<script src="https://game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
 		<script>
 			window.addEventListener('keydown', ev => {
 				if (['ArrowDown', 'ArrowUp', ' '].includes(ev.key)) {
@@ -113,7 +113,7 @@ body {
 
 		<script src="DinoRunDemo.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"DinoRunDemo","experimentalVK":false,"fileSizes":{"DinoRunDemo.pck":1817560,"DinoRunDemo.wasm":24799236},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"DinoRunDemo","experimentalVK":false,"fileSizes":{"DinoRunDemo.pck":1817560,"DinoRunDemo.wasm":24799236},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -208,22 +208,35 @@ function startGameLoading() {
 		}).then(() => {
 			setStatusMode('hidden');
 			initializing = false;
-			PokiSDK.gameLoadingFinished();
+			try {
+				if (typeof PokiSDK !== 'undefined' && typeof PokiSDK.gameLoadingFinished === 'function') {
+					PokiSDK.gameLoadingFinished();
+				}
+			} catch (e) {
+				console.warn('PokiSDK.gameLoadingFinished:', e);
+			}
 		}, displayFailureNotice);
 	}
 }
 
-		//Poki SDK Init.
-		PokiSDK.init().then(()=>{
-			startGameLoading()
-		}).catch(()=>{
-			startGameLoading()
-		})
-
-		let hn = window.location.hostname
-		if(hn == "localhost" || hn == "127.0.0.1"){
-			PokiSDK.setDebug(true)
+		// Poki SDK init — if script blocked or init fails, still start Godot
+		function runPokiThenStart() {
+			if (typeof PokiSDK === 'undefined') {
+				console.warn('Poki SDK not loaded (blocked network/ad blocker?). Starting game without Poki.');
+				startGameLoading();
+				return;
+			}
+			PokiSDK.init().then(function () {
+				startGameLoading();
+			}).catch(function () {
+				startGameLoading();
+			});
+			var hn = window.location.hostname;
+			if (hn === 'localhost' || hn === '127.0.0.1') {
+				try { PokiSDK.setDebug(true); } catch (e) {}
+			}
 		}
+		runPokiThenStart();
 		
 		</script>
 	</body>
