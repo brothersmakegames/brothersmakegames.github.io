@@ -52,6 +52,20 @@ body {
 	margin: auto;
 }
 
+#status-splash.show-image--false {
+	display: none;
+}
+
+#status-splash.fullsize--true {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+
+#status-splash.use-filter--false {
+	image-rendering: pixelated;
+}
+
 #status-progress, #status-notice {
 	display: none;
 }
@@ -76,25 +90,9 @@ body {
 	z-index: 1;
 }
 		</style>
-		
-		<!-- Poki SDK include -->
-		<script src="//game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
-		<script>
-			window.addEventListener('keydown', ev => {
-				if (['ArrowDown', 'ArrowUp', ' '].includes(ev.key)) {
-					ev.preventDefault();
-				}
-			});
-			window.addEventListener('wheel', ev => ev.preventDefault(), { passive: false });
-		</script>
-
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="DinoRunDemo.icon.png" />
 <link rel="apple-touch-icon" href="DinoRunDemo.apple-touch-icon.png"/>
 
-	<script> 
-		//place sitelock code here.
-	</script>
-	
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -106,18 +104,18 @@ body {
 		</noscript>
 
 		<div id="status">
-			<img id="status-splash" src="DinoRunDemo.png" alt="">
+			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="DinoRunDemo.png" alt="">
 			<progress id="status-progress"></progress>
 			<div id="status-notice"></div>
 		</div>
 
 		<script src="DinoRunDemo.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"DinoRunDemo","experimentalVK":false,"fileSizes":{"DinoRunDemo.pck":2526580,"DinoRunDemo.wasm":39509339},"focusCanvas":false,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"DinoRunDemo","experimentalVK":false,"fileSizes":{"DinoRunDemo.pck":2526580,"DinoRunDemo.wasm":39509339},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
-function startGameLoading() {
+(function () {
 	const statusOverlay = document.getElementById('status');
 	const statusProgress = document.getElementById('status-progress');
 	const statusNotice = document.getElementById('status-notice');
@@ -158,7 +156,7 @@ function startGameLoading() {
 		} else if (typeof err === 'string') {
 			setStatusNotice(err);
 		} else {
-			setStatusNotice('An unknown error occured');
+			setStatusNotice('An unknown error occurred.');
 		}
 		setStatusMode('notice');
 		initializing = false;
@@ -170,9 +168,15 @@ function startGameLoading() {
 
 	if (missing.length !== 0) {
 		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
+			let serviceWorkerRegistrationPromise;
+			try {
+				serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
+			} catch (err) {
+				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
+			}
 			// There's a chance that installing the service worker would fix the issue
 			Promise.race([
-				navigator.serviceWorker.getRegistration().then((registration) => {
+				serviceWorkerRegistrationPromise.then((registration) => {
 					if (registration != null) {
 						return Promise.reject(new Error('Service worker already exists.'));
 					}
@@ -207,24 +211,9 @@ function startGameLoading() {
 			},
 		}).then(() => {
 			setStatusMode('hidden');
-			initializing = false;
-			PokiSDK.gameLoadingFinished();
 		}, displayFailureNotice);
 	}
-}
-
-		//Poki SDK Init.
-		PokiSDK.init().then(()=>{
-			startGameLoading()
-		}).catch(()=>{
-			startGameLoading()
-		})
-
-		let hn = window.location.hostname
-		if(hn == "localhost" || hn == "127.0.0.1"){
-			PokiSDK.setDebug(true)
-		}
-		
+}());
 		</script>
 	</body>
 </html>
